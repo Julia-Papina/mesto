@@ -2,7 +2,7 @@ let content = document.querySelector('.content')
 let popup = document.querySelector('.popup'); 
 let profileButtonEdit = content.querySelector('.profile__edit-button'); 
 let popupClose = popup.querySelector('.popup__close');  
-let popupForm = popup.querySelector('.popup__container');  
+let popupForm = popup.querySelector('.popup__form_edit-description');  
 let nameInput = popupForm.querySelector('.popup__input_type_name'); 
 let jobInput = popupForm.querySelector('.popup__input_type_job');
 let profileName = content.querySelector('.profile__info-name');  
@@ -20,7 +20,7 @@ function popupChange() {
     popupChange();
   });
 
-  popupClose.addEventListener('click', popupChange);
+  
 
   function handleFormSubmit(evt) {
     evt.preventDefault(); 
@@ -33,5 +33,6 @@ function popupChange() {
     popupChange();
   }
   
+  popupClose.addEventListener('click', popupChange);
   popupForm.addEventListener('submit', handleFormSubmit);
 
