@@ -1,6 +1,6 @@
 let content = document.querySelector('.content')
 let popup = document.querySelector('.popup');
-let profileButtonEdit = content.querySelector('');
+let profileButtonEdit = content.querySelector('.profile__edit-button');
 let popupClose = popup.querySelector('.popup__close');
 let popupForm = popup.querySelector('.popup__container');
 let nameInput = popupForm.querySelector('.popup__input_type_name');
@@ -32,3 +32,4 @@ function popupChange() {
   }
   
   popupForm.addEventListener('submit', handleFormSubmit);
+

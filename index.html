@@ -7,21 +7,22 @@
     <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body class="root">
-    <div class="page">
+     <div class="page">
       <header class="header">
         <img class="header__logo" src="./images/logotip_mesto.svg" alt="Лого Место">
       </header>
-    </div>
+    
     <main class="content">
       <section class="profile" aria-label="Профиль">
         <div class="profile__info">
           <img src="./images/jak_kusto.jpg" alt="Аватарка" class="profile__avatar">
           <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-          <button class="button profile__edit-button" type="button"></button>
+          <button class="button profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
           <p class="profile__info-job">Исследователь океана</p>
       </div>
-       <button class="button profile__add-button" type="button"></button>
+       <button class="button profile__add-button" type="button" aria-label="Добавить фото"></button>
      </section>
+
      <section class="elements" aria-label="Карточки">
       <ul class="cards">
         <li class="cards__item">
@@ -68,18 +69,21 @@
         </li>
       </ul>
     </section>
+
     <div class="popup">
-      <form class="popup__container">
+      <div class="popup__container">
         <button class="popup__close" type="button"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <fieldset class="popup__items">
-          <input type="text" class="popup__input popup__input_type_name" placeholder="Имя" value="Жак-Ив Кусто">
-          <input type="text" class="popup__input popup__input_type_job" placeholder="О вас" value="Исследователь океана">
+        <form name="">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input type="text" class="popup__input popup__input_type_name" name="name" required placeholder="Имя" value="">
+          <input type="text" class="popup__input popup__input_type_job" name="job" placeholder="О вас" value="">
           <button type="submit" class="popup__button-save">Сохранить</button>
-        </fieldset>
-      </form>
+        </form>
+      </div>
     </div>
+
   </main>
+     </div>
   <footer class="footer">
       <p class="footer__text">&copy; 2023 Mesto Russia</p>
   </footer>

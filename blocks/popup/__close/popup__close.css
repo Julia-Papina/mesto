@@ -2,7 +2,6 @@
     width: 32px;
     height: 32px;
     background-image: url(../../../images/ikon_close.svg);
-    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -16,6 +15,7 @@
   
   .popup__close:hover {
     opacity: 0.6;
+    transition: all 0.5s;
   }
   
   @media screen and (max-width: 768px) {
@@ -24,6 +24,7 @@
       height: 20px;
       top: -36px;
       right: 0;
+      background-size: 20px 20px;
     }
   }
 
