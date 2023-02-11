@@ -70,15 +70,28 @@
       </ul>
     </section>
 
-    <div class="popup">
+    <div class="popup popup_type_edit">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
-        <form name="description" class="popup__form">
+        <form name="description" class="popup__form popap__form_edit_description">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input type="text" class="popup__input popup__input_type_name" name="name" required placeholder="Имя" value="">
           <input type="text" class="popup__input popup__input_type_job" name="job" placeholder="О вас" value="">
           <button type="submit" class="popup__button-save">Сохранить</button>
         </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_add">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <form name="add-card" class="popup__form popup__form_add_card">
+          <h2 class="popup__title">Новое место</h2>
+          <input type="text" class="popup__input popup__input_type_place" name="popup-place" placeholder="Название">
+          <input type="url" class="popup__input popup__input_type_link" name="popup-link" placeholder="Ссылка на картинку">
+          <button class="popup__button-save" type="submit">Создать</button>
+        </form>
+        
       </div>
     </div>
 
