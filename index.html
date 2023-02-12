@@ -24,50 +24,6 @@
      </section>
 
      <section class="elements" aria-label="Карточки">
-      <ul class="cards">
-        <li class="cards__item">
-          <img class="cards__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-          <div class="cards__info">
-            <h2 class="cards__title">Карачаевск</h2>
-            <button class="cards__like" type="button"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img class="cards__image" src="./images/gora_elbrus.jpg" alt="Гора Эльбрус">
-          <div class="cards__info">
-            <h2 class="cards__title">Гора Эльбрус</h2>
-            <button class="cards__like" type="button"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img class="cards__image" src="./images/dombay.jpg" alt="Домбай">
-          <div class="cards__info">
-            <h2 class="cards__title">Домбай</h2>
-            <button class="cards__like" type="button"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img class="cards__image" src="./images/doroga_v_gorah.jpg" alt="Дорога в горах">
-          <div class="cards__info">
-            <h2 class="cards__title">Дорога в горах</h2>
-            <button class="cards__like" type="button"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img class="cards__image" src="./images/zakat.jpg" alt="Закат">
-          <div class="cards__info">
-            <h2 class="cards__title">Закат</h2>
-            <button class="cards__like" type="button"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img class="cards__image" src="./images/ozero.jpg" alt="Озеро">
-          <div class="cards__info">
-            <h2 class="cards__title">Озеро</h2>
-            <button class="cards__like" type="button"></button>
-          </div>
-        </li>
-      </ul>
     </section>
 
     <div class="popup popup_type_edit">
@@ -94,6 +50,17 @@
         
       </div>
     </div>
+
+    <template id="cards">
+      <div class="cards__item">
+        <img src="#" alt="#" class="cards__image">
+        <div class="cards__info">
+          <h2 class="cards__title"></h2>
+          <button class="button cards__like" type="button" aria-label="Поставить лайк"></button>
+        </div>
+        <button class="button cards__delete-button" type="button" aria-label="Удалить пост"></button>
+      </div>
+    </template>
 
   </main>
      </div>

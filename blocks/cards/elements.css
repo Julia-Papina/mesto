@@ -1,4 +1,4 @@
-.cards {
+.elements {
     list-style: none;
     display: grid;
     margin: 0;
@@ -6,5 +6,7 @@
     grid-template-columns: repeat(auto-fit, 282px);
     gap: 20px 17px;
     justify-content: center;
+   
+    
     
 }

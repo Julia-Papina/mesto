@@ -46,3 +46,61 @@ function popupAddChange() {
   openAddButton.addEventListener("click", popupAddChange);
   popupAddClose.addEventListener("click", popupAddChange);
 
+
+
+  let initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
+  initialCards.forEach(function (element) {
+    let cadrsTemplate = document.querySelector('#cards').content;
+    let cardsItem = document.querySelector('.elements');
+    let cardsElement = cadrsTemplate.querySelector('.cards__item').cloneNode(true);
+    cardsElement.querySelector('.cards__image').src = element.link;
+    cardsElement.querySelector('.cards__title').textContent = element.name;
+    cardsItem.append(cardsElement);
+  });
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+   
+
+ 
+    
+
+
+
+
