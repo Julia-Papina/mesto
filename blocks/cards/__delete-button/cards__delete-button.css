@@ -8,3 +8,7 @@
     right: 20px;
     transition: var(--transition-opacity);
 }
+
+.cards__delete-button:hover {
+    opacity: 0.6;
+  }
