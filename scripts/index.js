@@ -52,7 +52,11 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
-profileButtonEdit.addEventListener('click', () => openPopup(profilePopup));
+profileButtonEdit.addEventListener('click', () => {
+  openPopup(profilePopup)
+  inputProfileName.value = profileName.textContent; 
+  inputProfileJob.value = profileJob.textContent; 
+}); 
 buttonAddCard.addEventListener('click', () => openPopup(popupAddCard));
 
 function closePopup(popup) {
@@ -84,7 +88,7 @@ const handleClickCard = (link, name) => {
 const createCard = (element) => {
   const newCard = cadrsTemplate.querySelector('.cards__item').cloneNode(true); //клонирование содержимого
   newCard.querySelector('.cards__title').textContent = element.name; //название карточки
-  cardImage = newCard.querySelector('.cards__image'); //картинка карточки
+  const cardImage = newCard.querySelector('.cards__image'); //картинка карточки
   cardImage.setAttribute('src', element.link); //ссылка на картинку
   cardImage.setAttribute('alt', element.name); //атрибут alt
 
@@ -93,12 +97,12 @@ const createCard = (element) => {
     evt.target.classList.toggle('cards__like_active');
   }); //лайк
   newCard.querySelector('.cards__delete-button').addEventListener('click', (evt) => {
-    evt.target.parentElement.remove();
+    evt.target.closest('.cards__item');
+    newCard.remove() //удалить
   });
 
   return newCard;
 }
-
 
 initialCards.forEach((element) => {
   const newCard = createCard(element);
