@@ -48,8 +48,16 @@ const popupImage = document.querySelector('.popup_type_image'); //попап с 
 const openImage = popupImage.querySelector('.popup__open-image');  //картинка в попапе
 const popapImagePlace = popupImage.querySelector('.popup__place'); //описание места под картинкой
 
+const closeByEscape = (evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
 }
 
 profileButtonEdit.addEventListener('click', () => {
