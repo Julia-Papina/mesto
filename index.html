@@ -27,49 +27,72 @@
     </section>
 
     <div class="popup popup_type_edit">
-      <div class="popup__container">
+      <form name="description" class="popup__container" novalidate>
         <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
 
-        <form name="description" class="popup__form popup__form_edit_description" novalidate>
-          <label class="popup__field">
-            <input type="text" required minlength="2" maxlength="40" class="popup__input popup__input_type_name" 
-              name="name" placeholder="Имя" value="" id="user-name">
-            <span class="popup__error user-name-error"></span>
-        </label>
+        <fieldset class="popup__field">
+          <input 
+          type="text" 
+          required 
+          minlength="2" 
+          maxlength="40" 
+          class="popup__input popup__input_type_name" 
+          name="userName" 
+          placeholder="Имя" 
+          value="" 
+          id="user-name">
+          <span class="popup__error user-name-error"></span>
 
-          <label class="popup__field">
-            <input type="text" minlength="2" maxlength="200" class="popup__input popup__input_type_job"
-              name="job" required placeholder="О вас" value="" id="user-job">
-            <span class="popup__error user-job-error"></span>
-          </label>
-
-          <button type="submit" class="popup__button-save">Сохранить</button>
+          <input 
+          type="text" 
+          minlength="2" 
+          maxlength="200" 
+          class="popup__input popup__input_type_job"
+          name="userJob" 
+          required 
+          placeholder="О вас" 
+          value="" 
+          id="user-job">
+          <span class="popup__error user-job-error">Заполните</span>
+          
+          <button type="submit" class="popup__button">Сохранить</button>
+          </fieldset>
         </form>
       </div>
-    </div>
 
     <div class="popup popup_type_add">
-      <div class="popup__container">
+      <form name="add-card" class="popup__container" novalidate>
         <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
+        <fieldset class="popup__field">
+          <input 
+          type="text" 
+          minlength="2" 
+          maxlength="30" 
+          class="popup__input popup__input_type_place"
+          name="cardName" 
+          placeholder="Название"
+          value="" 
+          required 
+          id="card-name">
+          <span class="popup__error popup-place-error"></span>
+        
+          <input 
+          type="url" 
+          class="popup__input popup__input_type_link" 
+          name="cardLink" 
+          placeholder="Ссылка на картинку" 
+          value="" 
+          required 
+          id="card-link">
+          <span class="popup__error popup-link-error"></span>
 
-        <form name="add-card" class="popup__form popup__form_add_card" novalidate>
-          <label class="popup__field">
-            <input type="text" minlength="2" maxlength="30" class="popup__input popup__input_type_place" name="popup-place" 
-              placeholder="Название" value="" required id="popup-place">
-            <span class="popup__error popup-place-error"></span>
-          </label>
-
-          <label class="popup__field">
-            <input type="url" class="popup__input popup__input_type_link" name="popup-link" 
-             placeholder="Ссылка на картинку" value="" required id="popup-link">
-            <span class="popup__error popup-link-error"></span>
-            <button class="popup__button-save" type="submit">Создать</button>
-          </label>  
-        </form>   
-      </div>
+          <button class="popup__button" type="submit">Создать</button>
+        </fieldset>  
+      </form>   
     </div>
+    
 
     <div class="popup popup_type_image">
       <div class="popup__container popup__container_image">

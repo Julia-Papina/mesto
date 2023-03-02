@@ -31,13 +31,13 @@ const profilePopup = document.querySelector('.popup_type_edit'); //попап р
 const profileButtonEdit = document.querySelector('.profile__edit-button'); //кнопка редактирования профиля
 const profileName = document.querySelector('.profile__info-name'); //имя в профиле
 const profileJob = document.querySelector('.profile__info-job'); // о вас в профиле
-const profileForm = profilePopup.querySelector('.popup__form'); //форма профиля
+const profileForm = profilePopup.querySelector('.popup__container'); //форма профиля
 const inputProfileName = profileForm.querySelector('.popup__input_type_name'); //поле имя в форме
 const inputProfileJob = profileForm.querySelector('.popup__input_type_job'); // поле - о вас в форме
 
 const popupAddCard = document.querySelector('.popup_type_add'); //попап добавления карточки
 const buttonAddCard = document.querySelector('.profile__add-button'); //кнопка добавления карточки
-const formAddCard = popupAddCard.querySelector('.popup__form_add_card'); //форма добавления карточек
+const formAddCard = popupAddCard.querySelector('.popup__container'); //форма добавления карточек
 const inputCardAddName = formAddCard.querySelector('.popup__input_type_place'); // поле с названием места в форме
 const inputCardAddLink = formAddCard.querySelector('.popup__input_type_link'); // поле с ссылкой на картинку в форме
 
@@ -61,14 +61,17 @@ function openPopup(popup) {
 }
 
 profileButtonEdit.addEventListener('click', () => {
-  openPopup(profilePopup)
-  inputProfileName.value = profileName.textContent; 
-  inputProfileJob.value = profileJob.textContent; 
+  profileForm.reset();
+  inputProfileName.setAttribute('value', profileName.textContent); 
+  inputProfileJob.setAttribute('value', profileJob.textContent); 
+  openPopup(profilePopup); 
 }); 
+
 buttonAddCard.addEventListener('click', () => openPopup(popupAddCard));
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 }
 
 //закрытие попапов
