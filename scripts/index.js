@@ -1,12 +1,12 @@
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'Архыз'
+    name: 'Липецк',
+    link: 'https://avia-all.ru/uploads/posts/2019-09/1569322380_6288126_xlarge.jpg',
+    
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Сочи',
+    link: 'https://avatars.dzeninfra.ru/get-zen_doc/4727350/pub_6266ee06a61b041e4b4531b9_6266ee8b380894296340624b/scale_1200'
   },
   {
     name: 'Иваново',
@@ -17,8 +17,8 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Екатеринбург',
+    link: 'https://www.vladtime.ru/uploads/posts/2018-07/1531398275_33249437771_d929e87cd5_o.jpg'
   },
   {
     name: 'Байкал',
