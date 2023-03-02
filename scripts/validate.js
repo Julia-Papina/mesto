@@ -47,8 +47,10 @@ const showInputError = (formElement, inputElement, errorMessage, object) => {
     const inputList = Array.from(
       formElement.querySelectorAll(object.inputSelector)
     );
+
     const buttonElement = formElement.querySelector(object.submitButtonSelector);
     toggleButtonState(inputList, buttonElement, object);
+
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         isValid(formElement, inputElement, object);
@@ -69,8 +71,7 @@ const showInputError = (formElement, inputElement, errorMessage, object) => {
         const buttonElement = formElement.querySelector(
           object.submitButtonSelector
         );
-        buttonElement.classList.add(object.inactiveButtonClass);
-        buttonElement.setAttribute('disabled', true);
+        toggleButtonState(inputList, buttonElement, object);
       });
   
       const fieldsetList = Array.from(
