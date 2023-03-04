@@ -29,14 +29,17 @@ const showInputError = (formElement, inputElement, errorMessage, object) => {
   
   const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
-      return !inputElement.validity.valid;
+    return !inputElement.validity.valid;
     });
   };
-  
+  const disabledBtn = (buttonElement, object) => {
+    buttonElement.classList.add(object.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', true);
+  };
+
   const toggleButtonState = (inputList, buttonElement, object) => {
     if (hasInvalidInput(inputList)) {
-      buttonElement.classList.add(object.inactiveButtonClass);
-      buttonElement.setAttribute('disabled', true);
+      disabledBtn(buttonElement, object);
     } else {
       buttonElement.classList.remove(object.inactiveButtonClass);
       buttonElement.removeAttribute('disabled');
@@ -71,7 +74,7 @@ const showInputError = (formElement, inputElement, errorMessage, object) => {
         const buttonElement = formElement.querySelector(
           object.submitButtonSelector
         );
-        toggleButtonState(inputList, buttonElement, object);
+        disabledBtn(buttonElement, object);
       });
   
       const fieldsetList = Array.from(
