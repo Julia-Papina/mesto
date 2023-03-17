@@ -6,12 +6,12 @@ export default class Card {
     this._openPopupFunc = openPopupFunc;
 }
  _getTemplate() {
- const newCard = document
+ const cardElement = document
     .querySelector(this._templateSelector)
     .content.querySelector('.cards__item')
     .cloneNode(true);
 
- return newCard;
+ return cardElement;
 
 }
 
