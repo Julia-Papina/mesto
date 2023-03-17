@@ -44,6 +44,7 @@ const closePopup = (popup) => {
   document.removeEventListener('keydown', closeByEscape);
 };
 
+// карточка
 function createCard(data) {
   const cardElement = new Card(data, "#cards", handleClickCard);
 
@@ -54,6 +55,7 @@ function addCard(card) {
   cardsItem.prepend(card);
 }
 
+// обработчик в форме редактированря профиля
 function handleFormEditSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputProfileName.value;
@@ -61,7 +63,7 @@ function handleFormEditSubmit(evt) {
   closePopup(profilePopup);
 }
 
-
+// обработчик отправки в создании карточки
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
 
@@ -82,6 +84,7 @@ function handleEditProfile() {
   openPopup(profilePopup);
 }
 
+// обработчик клика по карточке
 function handleClickCard(name, link) {
   openImage.src = link; //сслыка на картинку
   openImage.alt = name; //название изображения
@@ -114,8 +117,18 @@ popups.forEach((item) => {
 });
 
 profileForm.addEventListener("submit", handleFormEditSubmit);
-formAddCard.addEventListener('submit', handleAddCardSubmit);
+formAddCard.addEventListener('submit', handleAddCardSubmit); //обработчик формы
 
+const profileFormValidation = new FormValidator(
+  profileForm,
+  validationOptions 
+);
+const newCardFormValidation = new FormValidator(
+  formAddCard,
+  validationOptions
+);
+profileFormValidation.enableValidation();
+newCardFormValidation.enableValidation();
 
 
 
