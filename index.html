@@ -27,7 +27,7 @@
     </section>
 
     <div class="popup popup_type_edit">
-      <form name="description" class="popup__container" novalidate>
+      <form name="edit-profile" id="edit-profile"  class="popup__container" novalidate>
         <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
 
@@ -38,7 +38,7 @@
           minlength="2" 
           maxlength="40" 
           class="popup__input popup__input_type_name" 
-          name="userName" 
+          name="name" 
           placeholder="Имя" 
           value="" 
           id="user-name">
@@ -49,7 +49,7 @@
           minlength="2" 
           maxlength="200" 
           class="popup__input popup__input_type_job"
-          name="userJob" 
+          name="job" 
           required 
           placeholder="О вас" 
           value="" 
@@ -62,7 +62,7 @@
       </div>
 
     <div class="popup popup_type_add">
-      <form name="add-card" class="popup__container" novalidate>
+      <form name="add-card" id="add-card" class="popup__container" novalidate>
         <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
         <fieldset class="popup__field">
@@ -71,7 +71,7 @@
           minlength="2" 
           maxlength="30" 
           class="popup__input popup__input_type_place"
-          name="cardName" 
+          name="name" 
           placeholder="Название"
           value="" 
           required 
@@ -81,7 +81,7 @@
           <input 
           type="url" 
           class="popup__input popup__input_type_link" 
-          name="cardLink" 
+          name="link" 
           placeholder="Ссылка на картинку" 
           value="" 
           required 
@@ -94,7 +94,7 @@
     </div>
     
 
-    <div class="popup popup_type_image">
+    <div class="popup popup_type_image" id="popup-image">
       <div class="popup__container popup__container_image">
         <img class="popup__open-image" src="#" alt="">
         <p class="popup__place"></p>

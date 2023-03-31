@@ -38,20 +38,29 @@ export const validationOptions = {
 
 
 export const popups = document.querySelectorAll('.popup'), //все попапы
-  profilePopup = document.querySelector('.popup_type_edit'), //попап редактирования профиля
+  profileForm = document.querySelector('#edit-profile'), //форма редактирования профиля
+  formAddCard = document.querySelector('#add-card'), //форма добавления карточек
+  inputProfileName = document.querySelector('.popup__input_type_name'), //поле имя в форме редактирования профиля
+  inputProfileJob = document.querySelector('.popup__input_type_job'), // поле - о вас в форме
+  inputCardAddName = document.querySelector('.popup__input_type_place'), // поле с названием места в форме
+  inputCardAddLink = document.querySelector('.popup__input_type_link'), // поле с ссылкой на картинку в форме
   profileButtonEdit = document.querySelector('.profile__edit-button'), //кнопка редактирования профиля
-  profileName = document.querySelector('.profile__info-name'), //имя в профиле
-  profileJob = document.querySelector('.profile__info-job'), // о вас в профиле
-  profileForm = profilePopup.querySelector('.popup__container'), //форма профиля
-  inputProfileName = profileForm.querySelector('.popup__input_type_name'), //поле имя в форме
-  inputProfileJob = profileForm.querySelector('.popup__input_type_job'), // поле - о вас в форме
-  popupAddCard = document.querySelector('.popup_type_add'),//попап добавления карточки
   buttonAddCard = document.querySelector('.profile__add-button'), //кнопка добавления карточки
-  formAddCard = popupAddCard.querySelector('.popup__container'), //форма добавления карточек
-  inputCardAddName = formAddCard.querySelector('.popup__input_type_place'), // поле с названием места в форме
-  inputCardAddLink = formAddCard.querySelector('.popup__input_type_link'), // поле с ссылкой на картинку в форме
-  cadrsTemplate = document.querySelector('#cards').content, //содержимое темплейта с карточкой
-  cardsItem = document.querySelector('.cards'), //место для карточек
-  popupImage = document.querySelector('.popup_type_image'), //попап с большой картинкой
-  openImage = popupImage.querySelector('.popup__open-image'),  //картинка в попапе
-  popapImagePlace = popupImage.querySelector('.popup__place'); //описание места под картинкой
+  cardsItem = document.querySelector('.cards'); //место для карточек
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
