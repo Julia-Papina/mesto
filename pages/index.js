@@ -1,5 +1,10 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 import {
   initialCards,
   validationOptions,
@@ -21,7 +26,7 @@ import {
   popupImage,
   openImage,
   popapImagePlace,
-} from './consts.js';
+} from '../utils/constants.js';
 
 initialCards.forEach((item) => {
   addCard(createCard(item));
