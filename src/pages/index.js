@@ -26,8 +26,7 @@ const userCards = new Section(
       userCards.addItem(createCard(card));
     },
   },
-  constants.cardsItem
-);
+  '.cards');
 
 userCards.renderItems();
 
@@ -58,10 +57,10 @@ popupEditProfile.setEventListeners();
 //попап добавления карточки
 const popupAddImage = new PopupWithForm(
   '.popup_type_add',
-  ({ name, link }) => {
-    userCards.addItem(createCard({ name, link }));
+  (inputsValues) => {
+    userCards.addItem(createCard(inputsValues));
     popupAddImage.close();
-  }
+  } 
 );
 popupAddImage.setEventListeners();
 

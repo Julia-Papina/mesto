@@ -16,8 +16,7 @@
   "license": "ISC",
   "homepage": "https://github.com/Julia-Papina/mesto#readme",
   "dependencies": {
-    "core-js": "^3.29.1",
-    "jquery": "^3.6.4"
+    "core-js": "^3.29.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
@@ -30,6 +29,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss-loader": "^7.1.0",
+    "webpack": "^5.77.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.13.2"
   }
