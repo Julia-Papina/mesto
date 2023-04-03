@@ -1,5 +1,5 @@
 {
-  "name": "yandex_praktikum",
+  "name": "mesto",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,8 +7,14 @@
     "build": "webpack --mode production",
     "dev": "webpack serve"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julia-Papina/mesto.git"
+  },
+  "keywords": [],
   "author": "Julia Papina",
   "license": "ISC",
+  "homepage": "https://github.com/Julia-Papina/mesto#readme",
   "dependencies": {
     "core-js": "^3.29.1",
     "jquery": "^3.6.4"
