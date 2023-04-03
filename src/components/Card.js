@@ -6,13 +6,10 @@ export default class Card {
     this._openPopupFunc = openPopupFunc;
 }
  _getTemplate() {
- const cardElement = document
-    .querySelector(this._templateSelector)
-    .content.querySelector('.cards__item')
-    .cloneNode(true);
-
- return cardElement;
-
+   return document
+   .querySelector(this._templateSelector)
+   .content.querySelector('.cards__item')
+   .cloneNode(true);
 }
 
  _deleteCard() {
