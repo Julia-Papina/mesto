@@ -19,7 +19,7 @@ export default class Popup {
         this.close();
       }
     };
-  
+  //слушатель клика иконки зактрытия попапа
     setEventListeners() {
       this._popup.addEventListener("click", (evt) => {
         if (

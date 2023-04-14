@@ -6,6 +6,26 @@ import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
+import { api } from "../components/Api.js";
+
+api.getProfile()
+  .then(res => {
+    userInfo.setUserInfo(res.name, res.about);
+  })
+
+api.getInitialCards()
+  .then(cardList => {
+    cardList.forEach(data => {
+      const cardElement =  createCard(data)  
+    
+    userCards.addItem(cardElement)
+    })
+    
+  })
+
+
+
+
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__info-name",
@@ -21,7 +41,7 @@ function createCard(data) {
 
 const userCards = new Section(
   {
-    items: constants.initialCards,
+    items: [],
     renderer: (card) => {
       userCards.addItem(createCard(card));
     },
@@ -29,6 +49,7 @@ const userCards = new Section(
   '.cards');
 
 userCards.renderItems();
+
 
 //валидация
 const profileFormValidation = new FormValidator(

@@ -20,7 +20,7 @@ export default class Card {
  _toggleCardLike() {
     this._likeBtn.classList.toggle('cards__like_active');
 }
-
+//открытие попапа с картинкой при клике на карточку
  _setEventListeners() {
     this._image.addEventListener("click", () => {
       this._openPopupFunc(this._name, this._link);
