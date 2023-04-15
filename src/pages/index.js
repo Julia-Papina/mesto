@@ -9,39 +9,33 @@ import UserInfo from "../components/UserInfo.js";
 import { api } from "../components/Api.js";
 
 api.getProfile()
-  .then(res => {
-    userInfo.setUserInfo(res.name, res.about);
+ .then(res => {
+  userInfo.setUserInfo(res.name, res.about);
   })
+
 
 api.getInitialCards()
   .then(cardList => {
     cardList.forEach(data => {
-      const cardElement =  createCard(data)  
-    
-    userCards.addItem(cardElement)
-    })
-    
+      const cardElement = createCard(data)
+      userCards.addItem(cardElement)
+    })  
   })
-
-
-
-
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__info-name",
-  jobSelector: ".profile__info-job",
+  jobSelector: ".profile__info-job"
 });
 
 // карточка
 function createCard(data) {
   const cardElement = new Card(data, "#cards", openPopupImage);
-
   return cardElement.generateCard();
 }
 
 const userCards = new Section(
   {
-    items: [],
+    items: [], //constants.initialCards,
     renderer: (card) => {
       userCards.addItem(createCard(card));
     },
@@ -65,23 +59,44 @@ const newCardFormValidation = new FormValidator(
 newCardFormValidation.enableValidation();
 
 
+//сабмит редактирования профиля
+function submitEditProfile(data) {
+  const { name, job } = data
+  api.editProfile(name, job)
+  .then(() => {
+    userInfo.setUserInfo(name, job);
+  })
+   popupEditProfile.close();
+}
 //попап редактирования профиля
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit",
-  (inputData) => {
-    userInfo.setUserInfo(inputData);
-    popupEditProfile.close();
-  }
+  submitEditProfile
 );
 popupEditProfile.setEventListeners();
 
+
+
 //попап добавления карточки
+function submitPopupAddImage(inputsValues) {
+
+  api.addCard(inputsValues)
+  .then(res => {
+    //console.log('res', res)
+    const card = createCard({
+      name: res.name,
+      link: res.link
+    })
+    userCards.addItem(card)
+    popupAddImage.close();
+  })
+ // userCards.addItem(createCard(inputsValues));
+  //popupAddImage.close();
+} 
+
 const popupAddImage = new PopupWithForm(
   '.popup_type_add',
-  (inputsValues) => {
-    userCards.addItem(createCard(inputsValues));
-    popupAddImage.close();
-  } 
+  submitPopupAddImage
 );
 popupAddImage.setEventListeners();
 
@@ -92,17 +107,17 @@ popupImage.setEventListeners();
 function openPopupImage(name, link) {
   popupImage.open(name, link);
 }
-
-function openPopupEditProfile({ name, job }) {
-  constants.inputProfileName.value = name;
-  constants.inputProfileJob.value = job;
-
-  popupEditProfile.open();
-}
-
-constants.profileButtonEdit.addEventListener("click", () => {
-  openPopupEditProfile(userInfo.getUserInfo());
+//открытие попапа редактирования профиля
+const openPopupEditProfile = () => {
+  popupEditProfile.setInputValues(userInfo.getUserInfo());
   profileFormValidation.resetValidation();
+  popupEditProfile.open();
+};
+
+constants.profileButtonEdit.addEventListener("click", openPopupEditProfile);
+constants.buttonAddCard.addEventListener("click", () => {
+  popupAddImage.open();
+  newCardFormValidation.resetValidation();
 });
 
 
@@ -110,6 +125,12 @@ constants.buttonAddCard.addEventListener("click", () => {
   popupAddImage.open();
   newCardFormValidation.resetValidation();
 });
+
+
+
+
+
+
 
 
 

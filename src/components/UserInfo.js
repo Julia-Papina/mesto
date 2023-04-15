@@ -1,5 +1,5 @@
 export default class UserInfo {
-    constructor({ nameSelector, jobSelector }) {
+    constructor( {nameSelector, jobSelector} ) {
       this._name = document.querySelector(nameSelector);
       this._job = document.querySelector(jobSelector);
     }
@@ -11,7 +11,7 @@ export default class UserInfo {
       };
     }
   //принимает новые данные и добавляет их на страницу
-    setUserInfo(name, job) {
+    setUserInfo( name, job ) {
       this._name.textContent = name;
       this._job.textContent = job;
     }
