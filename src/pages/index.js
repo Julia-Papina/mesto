@@ -17,7 +17,12 @@ api.getProfile()
 api.getInitialCards()
   .then(cardList => {
     cardList.forEach(data => {
-      const cardElement = createCard(data)
+      const cardElement = createCard({
+        name: data.name,
+        link: data.link,
+        likes: data.likes,
+        id: data._id
+      })
       userCards.addItem(cardElement)
     })  
   })
@@ -29,7 +34,23 @@ const userInfo = new UserInfo({
 
 // карточка
 function createCard(data) {
-  const cardElement = new Card(data, "#cards", openPopupImage);
+  const cardElement = new Card(
+    data, 
+    "#cards", 
+    openPopupImage,
+    (id) => {
+      
+      confirmPopup.open()
+      confirmPopup.changeSubmitHandler(() => {
+        api.deleteCard(id)
+        .then(() => {
+          cardElement.deleteCard()
+          confirmPopup.close()
+        })
+      })
+    }
+    );
+
   return cardElement.generateCard();
 }
 
@@ -82,10 +103,11 @@ function submitPopupAddImage(inputsValues) {
 
   api.addCard(inputsValues)
   .then(res => {
-    //console.log('res', res)
     const card = createCard({
       name: res.name,
-      link: res.link
+      link: res.link,
+      likes: res.likes,
+      id: res._id
     })
     userCards.addItem(card)
     popupAddImage.close();
@@ -126,8 +148,10 @@ constants.buttonAddCard.addEventListener("click", () => {
   newCardFormValidation.resetValidation();
 });
 
+//попап удаления карточки
+const confirmPopup = new PopupWithForm('.popup_type_delete-confirm')
 
-
+confirmPopup.setEventListeners()
 
 
 

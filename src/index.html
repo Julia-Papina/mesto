@@ -102,13 +102,35 @@
       </div>
     </div>
 
+
+
+
+
+    <div class="popup popup_type_delete-confirm">
+      <form class="popup__container" name="delete" novalidate>
+        <button class="button popup__close" type="button"></button>
+        <h3 class="popup__title">Вы уверены?</h2>
+          <fieldset class="popup__field">
+            <button class="popup__button" type="submit">Да</button>
+          </fieldset>
+      </form>   
+    </div>
+
+
+
+
+
     <template id="cards">
       <div class="cards__item">
         <img src="#" alt="#" class="cards__image">
         <button class="button cards__delete-button" type="button" aria-label="Удалить пост"></button>
         <div class="cards__info">
           <h2 class="cards__title"></h2>
-          <button class="button cards__like" type="button" aria-label="Поставить лайк"></button>
+          <div class="cards__like-container">
+            <button class="button cards__like" type="button" aria-label="Поставить лайк"></button>
+            <span class="cards__like-count"></span>
+          </div>
+         
         </div> 
       </div>
     </template>

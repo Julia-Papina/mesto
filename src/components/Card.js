@@ -1,9 +1,12 @@
 export default class Card {
- constructor(data, templateSelector, openPopupFunc) {
+ constructor(data, templateSelector, openPopupFunc, handleDeleteClick) {
     this._name = data.name;
     this._link = data.link;
+    this._likes = data.likes;
+    this._id = data.id;
     this._templateSelector = templateSelector;
     this._openPopupFunc = openPopupFunc;
+    this._handleDeleteClick = handleDeleteClick;
 }
  _getTemplate() {
    return document
@@ -12,7 +15,7 @@ export default class Card {
    .cloneNode(true);
 }
 
- _deleteCard() {
+deleteCard() {
     this._element.remove();
     this._element = null;
 }
@@ -27,13 +30,18 @@ export default class Card {
     });
 
     this._deleteBtn.addEventListener("click", () => {
-        this._deleteCard();
+        this._handleDeleteClick(this._id);
       });
 
     this._likeBtn.addEventListener("click", () => {
         this._toggleCardLike();
       });
     }
+
+_setLikes() {
+  const likeCountElement = this._element.querySelector('.cards__like-count')
+  likeCountElement.textContent = this._likes.length
+}
 
  generateCard() {
     this._element = this._getTemplate();
@@ -47,6 +55,8 @@ export default class Card {
     this._title.textContent = this._name;
     this._image.alt = this._name;
     this._image.src = this._link;
+
+    this._setLikes();
     
     return this._element;
 }
