@@ -29,8 +29,8 @@ class Api {
                 about
               }),
           })
-        .then(res => res.ok ? res.json() : Promise.reject(res.status))
-        .catch(console.log)   
+          .then(res => res.ok ? res.json() : Promise.reject(res.status))
+          .catch(console.log)   
     }
 
     addCard(inputsValues) {
@@ -42,8 +42,8 @@ class Api {
                 link: inputsValues.link
               }),
           })
-        .then(res => res.ok ? res.json() : Promise.reject(res.status))
-        .catch(console.log)   
+          .then(res => res.ok ? res.json() : Promise.reject(res.status))
+          .catch(console.log)   
     }
 
 
@@ -53,9 +53,33 @@ class Api {
           method:"DELETE",
           headers: this._headers
         })
+        .then(res => res.ok ? res.json() : Promise.reject(res.status))
+        .catch(console.log)   
+  }
+
+
+
+  
+   deleteLike(id) {
+     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+        method:"DELETE",
+        headers: this._headers
+      })
       .then(res => res.ok ? res.json() : Promise.reject(res.status))
       .catch(console.log)   
   }
+
+
+  
+  addLike(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method:"PUT",
+      headers: this._headers
+      })
+      .then(res => res.ok ? res.json() : Promise.reject(res.status))
+      .catch(console.log)   
+  }
+
 
 
   

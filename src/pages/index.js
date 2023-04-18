@@ -8,9 +8,12 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import { api } from "../components/Api.js";
 
+let userId 
+
 api.getProfile()
  .then(res => {
   userInfo.setUserInfo(res.name, res.about);
+  userId = res._id
   })
 
 
@@ -21,7 +24,9 @@ api.getInitialCards()
         name: data.name,
         link: data.link,
         likes: data.likes,
-        id: data._id
+        id: data._id,
+        userId: userId,
+        ownerId: data.owner._id
       })
       userCards.addItem(cardElement)
     })  
@@ -33,13 +38,13 @@ const userInfo = new UserInfo({
 });
 
 // карточка
+
 function createCard(data) {
   const cardElement = new Card(
     data, 
     "#cards", 
     openPopupImage,
     (id) => {
-      
       confirmPopup.open()
       confirmPopup.changeSubmitHandler(() => {
         api.deleteCard(id)
@@ -48,7 +53,21 @@ function createCard(data) {
           confirmPopup.close()
         })
       })
-    }
+    },
+    (id) => {
+      if(cardElement.isLiked()) {
+        api.deleteLike(id)
+        .then(res => {
+          cardElement.setLikes(res.likes)
+        })
+
+      } else {
+        api.addLike(id)
+        .then(res => {
+          cardElement.setLikes(res.likes)
+        })
+      }
+    }   
     );
 
   return cardElement.generateCard();
@@ -107,7 +126,9 @@ function submitPopupAddImage(inputsValues) {
       name: res.name,
       link: res.link,
       likes: res.likes,
-      id: res._id
+      id: res._id,
+      userId: userId,
+      ownerId: res.owner._id
     })
     userCards.addItem(card)
     popupAddImage.close();
