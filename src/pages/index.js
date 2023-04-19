@@ -124,6 +124,7 @@ function submitEditProfile(data) {
   .finally(() => {
     popupEditProfile.isLoadingMessage(false);
   })
+  
 }
 
 //попап редактирования профиля
@@ -155,6 +156,7 @@ function submitPopupAddImage(inputsValues) {
   .finally(() => {
     popupAddImage.isLoadingMessage(false);
   })  
+  
 } 
 
 const popupAddImage = new PopupWithForm(
