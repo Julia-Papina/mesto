@@ -40,12 +40,14 @@ export const validationOptions = {
 export const popups = document.querySelectorAll('.popup'), //все попапы
   profileForm = document.querySelector('#edit-profile'), //форма редактирования профиля
   formAddCard = document.querySelector('#add-card'), //форма добавления карточек
+  formAvatar = document.querySelector('#avatar'), //форма редактирования аватара
   inputProfileName = document.querySelector('.popup__input_type_name'), //поле имя в форме редактирования профиля
   inputProfileJob = document.querySelector('.popup__input_type_job'), // поле - о вас в форме
   inputCardAddName = document.querySelector('.popup__input_type_place'), // поле с названием места в форме
   inputCardAddLink = document.querySelector('.popup__input_type_link'), // поле с ссылкой на картинку в форме
   profileButtonEdit = document.querySelector('.profile__edit-button'), //кнопка редактирования профиля
-  buttonAddCard = document.querySelector('.profile__add-button'), //кнопка добавления карточки
+  buttonAddCard = document.querySelector('.profile__add-button'),
+  buttonAvatar = document.querySelector('.profile__avatar-edit'), //кнопка добавления карточки
   cardsItem = document.querySelector('.cards'); //место для карточек
 
 

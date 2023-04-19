@@ -46,8 +46,6 @@ class Api {
           .catch(console.log)   
     }
 
-
-
     deleteCard(id) {
       return fetch(`${this._baseUrl}/cards/${id}`, {
           method:"DELETE",
@@ -57,9 +55,6 @@ class Api {
         .catch(console.log)   
   }
 
-
-
-  
    deleteLike(id) {
      return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method:"DELETE",
@@ -69,8 +64,6 @@ class Api {
       .catch(console.log)   
   }
 
-
-  
   addLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method:"PUT",
@@ -80,14 +73,17 @@ class Api {
       .catch(console.log)   
   }
 
-
-
-  
-  
-
-
-
-
+  changeUserAvatar(avatar){
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+        method:"PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+            avatar
+          }),
+      })
+      .then(res => res.ok ? res.json() : Promise.reject(res.status))
+      .catch(console.log)   
+}
   }
   
   export const api = new Api({

@@ -9,13 +9,12 @@ import UserInfo from "../components/UserInfo.js";
 import { api } from "../components/Api.js";
 
 let userId 
-
 api.getProfile()
  .then(res => {
   userInfo.setUserInfo(res.name, res.about);
+  userInfo.setUserAvatar(res.avatar);
   userId = res._id
   })
-
 
 api.getInitialCards()
   .then(cardList => {
@@ -34,11 +33,11 @@ api.getInitialCards()
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__info-name",
-  jobSelector: ".profile__info-job"
+  jobSelector: ".profile__info-job",
+  avatarSelector: ".profile__avatar"
 });
 
 // карточка
-
 function createCard(data) {
   const cardElement = new Card(
     data, 
@@ -84,7 +83,6 @@ const userCards = new Section(
 
 userCards.renderItems();
 
-
 //валидация
 const profileFormValidation = new FormValidator(
   constants.profileForm,
@@ -98,6 +96,11 @@ const newCardFormValidation = new FormValidator(
 );
 newCardFormValidation.enableValidation();
 
+const avatarFormValidation = new FormValidator(
+  constants.formAvatar,
+  constants.validationOptions
+);
+avatarFormValidation.enableValidation();
 
 //сабмит редактирования профиля
 function submitEditProfile(data) {
@@ -116,7 +119,6 @@ const popupEditProfile = new PopupWithForm(
 popupEditProfile.setEventListeners();
 
 
-
 //попап добавления карточки
 function submitPopupAddImage(inputsValues) {
 
@@ -133,8 +135,6 @@ function submitPopupAddImage(inputsValues) {
     userCards.addItem(card)
     popupAddImage.close();
   })
- // userCards.addItem(createCard(inputsValues));
-  //popupAddImage.close();
 } 
 
 const popupAddImage = new PopupWithForm(
@@ -173,6 +173,23 @@ constants.buttonAddCard.addEventListener("click", () => {
 const confirmPopup = new PopupWithForm('.popup_type_delete-confirm')
 
 confirmPopup.setEventListeners()
+
+//попап изменения аватара
+constants.buttonAvatar.addEventListener('click', () => {
+  popupAvatar.open();
+})
+const popupAvatar = new PopupWithForm('.popup_type_avatar', changeUserAvatar)
+
+function changeUserAvatar(data) {
+  const { avatar } = data
+  api.changeUserAvatar(avatar)
+  .then(() => {
+    
+    userInfo.setUserAvatar(avatar);
+    popupAvatar.close();
+  })
+}
+popupAvatar.setEventListeners();
 
 
 

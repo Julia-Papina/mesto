@@ -1,7 +1,7 @@
 .profile__edit-button {
     width: 24px;
     height: 24px;
-    margin-bottom: 8px;
+    margin: 16px 0 0 18px;
     background-image: url(../../../images/ruchka.svg);
     background-repeat: no-repeat;
     border: 1px solid #FFFFFF;
@@ -12,7 +12,7 @@
       width: 18px;
       height: 18px;
       background-image: url(../../../images/ruchka_adapt.svg);
-      margin-bottom: 6px;
+      margin: 10px 0 0 10px;
     }
   }
 
