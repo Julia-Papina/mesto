@@ -6,7 +6,15 @@ import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
-import { api } from "../components/Api.js";
+import Api from "../components/Api.js";
+
+ const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
+  headers: {
+    authorization: '1abf7f9d-c23d-4867-8bbb-e68949373c5f',
+    'Content-Type': 'application/json'
+  }
+}); 
 
 let userId 
 api.getProfile()
@@ -105,12 +113,19 @@ avatarFormValidation.enableValidation();
 //сабмит редактирования профиля
 function submitEditProfile(data) {
   const { name, job } = data
+  popupEditProfile.isLoadingMessage(true);
   api.editProfile(name, job)
   .then(() => {
     userInfo.setUserInfo(name, job);
+    popupEditProfile.close();
   })
-   popupEditProfile.close();
+  .catch((err) => {
+    console.log(err);})
+  .finally(() => {
+    popupEditProfile.isLoadingMessage(false);
+  })
 }
+
 //попап редактирования профиля
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit",
@@ -121,7 +136,7 @@ popupEditProfile.setEventListeners();
 
 //попап добавления карточки
 function submitPopupAddImage(inputsValues) {
-
+  popupAddImage.isLoadingMessage(true);
   api.addCard(inputsValues)
   .then(res => {
     const card = createCard({
@@ -135,6 +150,11 @@ function submitPopupAddImage(inputsValues) {
     userCards.addItem(card)
     popupAddImage.close();
   })
+  .catch((err) => {
+    console.log(err);})
+  .finally(() => {
+    popupAddImage.isLoadingMessage(false);
+  })  
 } 
 
 const popupAddImage = new PopupWithForm(
@@ -182,11 +202,17 @@ const popupAvatar = new PopupWithForm('.popup_type_avatar', changeUserAvatar)
 
 function changeUserAvatar(data) {
   const { avatar } = data
+  popupAvatar.isLoadingMessage(true);
   api.changeUserAvatar(avatar)
   .then(() => {
     
     userInfo.setUserAvatar(avatar);
     popupAvatar.close();
+  })
+  .catch((err) => {
+    console.log(err);})
+  .finally(() => {
+    popupAvatar.isLoadingMessage(false);
   })
 }
 popupAvatar.setEventListeners();

@@ -1,24 +1,29 @@
-class Api {
+export default class Api {
     constructor({ baseUrl, headers}) {
         this._headers = headers;
-        this._baseUrl = baseUrl;
-      
+        this._baseUrl = baseUrl;  
+    }
+
+    _checkResponse(res) {
+      if (res.ok) {
+        return res.json();
+      } else {
+        return Promise.reject(`${res.status} ${res.statusText}`);
+      }
     }
 
     getProfile() {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject(res.status))
-        .catch(console.log)  
+        .then(this._checkResponse);
     }
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
           headers: this._headers
-        }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-        .catch(console.log)   
-    }
+        }).then(this._checkResponse);
+      }
   
     editProfile(name, about) {
         return fetch(`${this._baseUrl}/users/me`, {
@@ -29,8 +34,7 @@ class Api {
                 about
               }),
           })
-          .then(res => res.ok ? res.json() : Promise.reject(res.status))
-          .catch(console.log)   
+          .then(this._checkResponse); 
     }
 
     addCard(inputsValues) {
@@ -42,8 +46,7 @@ class Api {
                 link: inputsValues.link
               }),
           })
-          .then(res => res.ok ? res.json() : Promise.reject(res.status))
-          .catch(console.log)   
+          .then(this._checkResponse); 
     }
 
     deleteCard(id) {
@@ -51,8 +54,7 @@ class Api {
           method:"DELETE",
           headers: this._headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject(res.status))
-        .catch(console.log)   
+        .then(this._checkResponse); 
   }
 
    deleteLike(id) {
@@ -60,8 +62,7 @@ class Api {
         method:"DELETE",
         headers: this._headers
       })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)   
+      .then(this._checkResponse);
   }
 
   addLike(id) {
@@ -69,8 +70,7 @@ class Api {
       method:"PUT",
       headers: this._headers
       })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)   
+      .then(this._checkResponse);
   }
 
   changeUserAvatar(avatar){
@@ -81,15 +81,7 @@ class Api {
             avatar
           }),
       })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)   
+      .then(this._checkResponse); 
 }
   }
   
-  export const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
-    headers: {
-      authorization: '1abf7f9d-c23d-4867-8bbb-e68949373c5f',
-      'Content-Type': 'application/json'
-    }
-  }); 
