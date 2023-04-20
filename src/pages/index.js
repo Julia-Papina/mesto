@@ -17,14 +17,15 @@ import Api from "../components/Api.js";
 }); 
 
 let userId 
+
 api.getProfile()
  .then(res => {
   userInfo.setUserInfo(res.name, res.about);
   userInfo.setUserAvatar(res.avatar);
   userId = res._id
-  })
+  });
 
-api.getInitialCards()
+  api.getInitialCards()
   .then(cardList => {
     cardList.forEach(data => {
       const cardElement = createCard({
@@ -39,7 +40,7 @@ api.getInitialCards()
     })  
   })
 
-const userInfo = new UserInfo({
+  const userInfo = new UserInfo({
   nameSelector: ".profile__info-name",
   jobSelector: ".profile__info-job",
   avatarSelector: ".profile__avatar"
@@ -48,7 +49,7 @@ const userInfo = new UserInfo({
 // карточка
 function createCard(data) {
   const cardElement = new Card(
-    data, 
+    data,
     "#cards", 
     openPopupImage,
     (id) => {
@@ -59,6 +60,9 @@ function createCard(data) {
           cardElement.deleteCard()
           confirmPopup.close()
         })
+        .catch((err) => {
+          console.log(err);
+        });
       })
     },
     (id) => {
@@ -67,12 +71,18 @@ function createCard(data) {
         .then(res => {
           cardElement.setLikes(res.likes)
         })
+        .catch((err) => {
+          console.log(err);
+        });
 
       } else {
         api.addLike(id)
         .then(res => {
           cardElement.setLikes(res.likes)
         })
+        .catch((err) => {
+          console.log(err);
+        });
       }
     }   
     );
@@ -80,16 +90,18 @@ function createCard(data) {
   return cardElement.generateCard();
 }
 
+
+
 const userCards = new Section(
   {
-    items: [], //constants.initialCards,
+    //items: [],  
     renderer: (card) => {
       userCards.addItem(createCard(card));
     },
   },
   '.cards');
 
-userCards.renderItems();
+//userCards.renderItems();
 
 //валидация
 const profileFormValidation = new FormValidator(
