@@ -1,12 +1,11 @@
 export default class Section {
-    constructor({ items, renderer }, containerSelector) {
-      this._items = items;
+    constructor({ renderer }, containerSelector) {
       this._renderer = renderer;
       this._container = document.querySelector(containerSelector);
     }
   //отрисовка всех элементов
-    renderItems() {
-      this._items.forEach((item) => {
+    renderItems(cards) {
+        cards.forEach((item) => {
         this._renderer(item); //отрисовка каждого отдельного элемента
       });
     }
