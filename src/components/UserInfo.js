@@ -13,12 +13,12 @@ export default class UserInfo {
     }
   //принимает новые данные и добавляет их на страницу
     setUserInfo( name, job ) {
-      this._name.textContent = name;
-      this._job.textContent = job;
+     if (name) this._name.textContent = name;
+     if (job) this._job.textContent = job;
     }
 
     setUserAvatar( avatar ) {
-      this._avatar.src = avatar
+      if (avatar) this._avatar.src = avatar
     }
 
 
